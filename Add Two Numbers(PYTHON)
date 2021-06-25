@@ -1,0 +1,16 @@
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+         res=current = ListNode(0)
+         carr=0
+         while l1 or l2 or carr:
+            if l1:
+                carr +=l1.val
+                l1=l1.next
+            if l2:
+                carr +=l2.val
+                l2=l2.next
+            current.next=ListNode(carr%10)
+            current=current.next
+            carr=carr//10
+            
+         return res.next
