@@ -1,0 +1,22 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+        num, i = 0, 0
+        while True:
+            try:
+                if i <= len(s) - 2:
+                    if roman[s[i]] > roman[s[i + 1]]:
+                        num += roman[s[i]]
+                        i += 1
+                    elif roman[s[i]] < roman[s[i + 1]]:
+                        num += roman[s[i + 1]] - roman[s[i]]
+                        i += 2
+                    else:
+                        num += 2 * roman[s[i + 1]]
+                        i += 2
+                else:
+                    num += roman[s[i]]
+                    break
+            except:
+                break
+        return num
